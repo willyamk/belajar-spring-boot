@@ -13,7 +13,7 @@ Berikut adalah konfigurasi aplikasi Spring Boot yang didefinisikan dalam file `a
     - Deskripsi: Konfigurasi Hibernate untuk mengotomatisasi pembuatan dan pembaruan skema basis data.
 
 ## 4. Konfigurasi Database MySQL
-- **spring.datasource.url:** jdbc:mysql://localhost:3306/spring_bot
+- **spring.datasource.url:** jdbc:mysql://localhost:3306/spring_b0ot
     - Deskripsi: URL JDBC untuk koneksi ke database MySQL.
 - **spring.datasource.username:** root
     - Deskripsi: Username untuk mengakses database MySQL.

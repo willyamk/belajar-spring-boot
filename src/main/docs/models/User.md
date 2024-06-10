@@ -1,48 +1,78 @@
-# Dokumentasi Entitas Pengguna (User)
+# Dokumentasi Kelas User
 
-Kelas `User` merepresentasikan pengguna dalam aplikasi ini. Ini digunakan untuk menyimpan informasi pengguna seperti nama pengguna, email, dan kata sandi.
+`User` adalah entitas yang merepresentasikan pengguna dalam aplikasi. Ini digunakan untuk menyimpan informasi pengguna seperti nama pengguna, email, dan kata sandi.
 
-## Attributes
+## Atribut
 
-1. **id** (UUID)
-    - Deskripsi: ID unik untuk setiap pengguna.
-2. **username** (String)
-    - Deskripsi: Nama pengguna dari pengguna.
-3. **email** (String)
-    - Deskripsi: Alamat email dari pengguna.
-4. **password** (String)
-    - Deskripsi: Kata sandi dari pengguna. Kata sandi akan disimpan dalam bentuk terenkripsi menggunakan BCryptPasswordEncoder.
+### 1. id
+- **Deskripsi:** ID unik untuk setiap pengguna.
+- **Tipe Data:** UUID
+- **Anotasi:** @Id, @GeneratedValue
 
-## Methods
+### 2. user_code
+- **Deskripsi:** Kode pengguna dari pengguna.
+- **Tipe Data:** String
 
-### 1. getId()
+### 3. username
+- **Deskripsi:** Nama pengguna dari pengguna.
+- **Tipe Data:** String
+
+### 4. email
+- **Deskripsi:** Alamat email dari pengguna.
+- **Tipe Data:** String
+
+### 5. password
+- **Deskripsi:** Kata sandi dari pengguna.
+- **Tipe Data:** String
+
+## Metode
+
+### 1. Constructor User(UUID id, String user_code, String username, String email, String password)
+- **Deskripsi:** Constructor untuk membuat objek User dengan parameter tertentu.
+- **Parameter:**
+   - `id` (UUID): ID pengguna.
+   - `user_code` (String): Kode pengguna.
+   - `username` (String): Nama pengguna.
+   - `email` (String): Alamat email.
+   - `password` (String): Kata sandi.
+- **Anotasi:** @Entity
+
+### 2. getId()
 - **Deskripsi:** Mengembalikan ID dari pengguna.
 - **Return Type:** UUID
 
-### 2. setId(UUID id)
+### 3. setId(UUID id)
 - **Deskripsi:** Mengatur ID untuk pengguna.
-- **Parameter:** id (UUID) - ID yang akan diatur.
+- **Parameter:** `id` (UUID): ID yang akan diatur.
 
-### 3. getUsername()
+### 4. getUsername()
 - **Deskripsi:** Mengembalikan nama pengguna dari pengguna.
 - **Return Type:** String
 
-### 4. setUsername(String username)
+### 5. setUsername(String username)
 - **Deskripsi:** Mengatur nama pengguna untuk pengguna.
-- **Parameter:** username (String) - Nama pengguna yang akan diatur.
+- **Parameter:** `username` (String): Nama pengguna yang akan diatur.
 
-### 5. getEmail()
+### 6. getUser_code()
+- **Deskripsi:** Mengembalikan kode pengguna dari pengguna.
+- **Return Type:** String
+
+### 7. setUser_code(String user_code)
+- **Deskripsi:** Mengatur kode pengguna untuk pengguna.
+- **Parameter:** `user_code` (String): Kode pengguna yang akan diatur.
+
+### 8. getEmail()
 - **Deskripsi:** Mengembalikan alamat email dari pengguna.
 - **Return Type:** String
 
-### 6. setEmail(String email)
+### 9. setEmail(String email)
 - **Deskripsi:** Mengatur alamat email untuk pengguna.
-- **Parameter:** email (String) - Alamat email yang akan diatur.
+- **Parameter:** `email` (String): Alamat email yang akan diatur.
 
-### 7. getPassword()
+### 10. getPassword()
 - **Deskripsi:** Mengembalikan kata sandi dari pengguna.
 - **Return Type:** String
 
-### 8. setPassword(String password)
+### 11. setPassword(String password)
 - **Deskripsi:** Mengatur kata sandi untuk pengguna. Metode ini akan mengenkripsi kata sandi menggunakan BCryptPasswordEncoder.
-- **Parameter:** password (String) - Kata sandi yang akan diatur.
+- **Parameter:** `password` (String): Kata sandi yang akan diatur.

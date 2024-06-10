@@ -22,6 +22,11 @@ public class User {
     private UUID id;
 
     /**
+     * Kode pengguna dari pengguna.
+     */
+    private String user_code;
+
+    /**
      * Nama pengguna dari pengguna.
      */
     private String username;
@@ -35,6 +40,18 @@ public class User {
      * Kata sandi dari pengguna.
      */
     private String password;
+
+    public User(UUID id, String user_code, String username, String email, String password) {
+        this.id = id;
+        this.user_code = user_code;
+        this.username = username;
+        this.email = email;
+        setPassword(password);
+    }
+
+    public User() {
+        // Empty constructor required by JPA
+    }
 
     /**
      * Mengembalikan ID dari pengguna.
@@ -66,6 +83,22 @@ public class User {
      */
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    /**
+     * Mengembalikan kode pengguna dari pengguna.
+     * @return Kode pengguna.
+     */
+    public String getUser_code() {
+        return user_code;
+    }
+
+    /**
+     * Mengatur kode pengguna untuk pengguna.
+     * @param user_code Kode pengguna yang akan diatur.
+     */
+    public void setUser_code(String user_code) {
+        this.user_code = user_code;
     }
 
     /**

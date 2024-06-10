@@ -1,55 +1,102 @@
-# Dokumentasi Endpoint untuk Pengguna (User)
+# Dokumentasi untuk UserController.md
 
-## UserController
+## Overview
 
-Kelas `UserController` mengatur semua endpoint terkait pengguna dalam aplikasi ini. Ini menyediakan operasi dasar seperti membuat, membaca, memperbarui, dan menghapus (CRUD) untuk entitas User.
+Kelas `UserController` mengatur semua endpoint terkait pengguna dalam aplikasi. Ini menyediakan operasi dasar CRUD (Create, Read, Update, Delete) untuk entitas `User`.
+
+## Struktur Kelas
+
+### Package
+- **com.srpingboot.belajar_spring.controllers**
 
 ### Dependencies
-- `UserRepository`: Digunakan untuk mengakses dan memanipulasi data pengguna dalam basis data.
+- **UserRepository**: Digunakan untuk mengakses dan memanipulasi data pengguna dalam basis data.
 
-### Endpoints
+## Endpoint
 
-#### 1. Membuat Pengguna Baru
+### 1. Buat Pengguna Baru
 
-- **Method:** POST
+- **Metode HTTP:** POST
 - **Endpoint:** `/user`
+- **Deskripsi:** Membuat pengguna baru.
 - **Request Body:** Objek JSON yang mewakili pengguna baru.
-- **Response:** Objek JSON yang mewakili pengguna yang baru dibuat.
+- **Response:** Objek pengguna yang baru dibuat.
 
-#### 2. Mendapatkan Semua Pengguna
+### 2. Unggah Pengguna Dari JSON
 
-- **Method:** GET
+- **Metode HTTP:** POST
+- **Endpoint:** `/users/json`
+- **Deskripsi:** Mengunggah data pengguna dari file JSON.
+- **Request Body:** Daftar objek pengguna dalam format JSON.
+- **Response:** ResponseEntity dengan pesan keberhasilan atau kegagalan.
+
+### 3. Unggah Pengguna Dari CSV
+
+- **Metode HTTP:** POST
+- **Endpoint:** `/users/csv`
+- **Deskripsi:** Mengunggah data pengguna dari file CSV.
+- **Request Parameters:**
+  - `file`: MultipartFile yang berisi file CSV.
+- **Response:** ResponseEntity dengan pesan keberhasilan atau kegagalan.
+
+### 4. Baca Pengguna Dari CSV
+
+- **Metode HTTP:** POST
+- **Endpoint:** `/users/csv/read`
+- **Deskripsi:** Membaca data pengguna dari file CSV.
+- **Request Parameters:**
+  - `file`: MultipartFile yang berisi file CSV.
+- **Response:** ResponseEntity dengan data pengguna atau pesan kegagalan.
+
+### 5. Edit Pengguna Dari CSV
+
+- **Metode HTTP:** POST
+- **Endpoint:** `/users/edit/csv`
+- **Deskripsi:** Mengedit data pengguna dari file CSV.
+- **Request Parameters:**
+  - `file`: MultipartFile yang berisi file CSV.
+- **Response:** ResponseEntity dengan pesan keberhasilan atau kegagalan.
+
+### 6. Dapatkan Semua Pengguna
+
+- **Metode HTTP:** GET
 - **Endpoint:** `/users`
-- **Response:** Daftar semua pengguna dalam bentuk JSON Array.
+- **Deskripsi:** Mengambil semua pengguna.
+- **Response:** Daftar semua pengguna.
 
-#### 3. Mendapatkan Pengguna Berdasarkan ID
+### 7. Dapatkan Pengguna Berdasarkan ID
 
-- **Method:** GET
+- **Metode HTTP:** GET
 - **Endpoint:** `/user/{id}`
-- **Path Variable:** `id` - UUID dari pengguna yang akan dicari.
-- **Response:** Objek JSON yang mewakili pengguna yang sesuai dengan ID yang diberikan.
+- **Deskripsi:** Mengambil pengguna berdasarkan ID mereka.
+- **Path Variable:** `id` (UUID) - ID dari pengguna yang akan diambil.
+- **Response:** Objek pengguna dengan ID yang spesifik.
 
-#### 4. Memperbarui Informasi Pengguna yang Ada
+### 8. Perbarui Pengguna
 
-- **Method:** PUT
+- **Metode HTTP:** PUT
 - **Endpoint:** `/user/{id}`
-- **Path Variable:** `id` - UUID dari pengguna yang akan diperbarui.
-- **Request Body:** Objek JSON yang berisi informasi baru pengguna.
-- **Response:** Objek JSON yang mewakili pengguna yang telah diperbarui.
+- **Deskripsi:** Memperbarui informasi pengguna yang ada.
+- **Path Variable:** `id` (UUID) - ID dari pengguna yang akan diperbarui.
+- **Request Body:** Objek JSON yang berisi informasi pengguna yang diperbarui.
+- **Response:** Objek pengguna yang telah diperbarui.
 
-#### 5. Menghapus Pengguna Berdasarkan ID
+### 9. Hapus Pengguna Berdasarkan ID
 
-- **Method:** DELETE
+- **Metode HTTP:** DELETE
 - **Endpoint:** `/user/{id}`
-- **Path Variable:** `id` - UUID dari pengguna yang akan dihapus.
-- **Response:** Pesan sukses setelah pengguna berhasil dihapus.
+- **Deskripsi:** Menghapus pengguna berdasarkan ID mereka.
+- **Path Variable:** `id` (UUID) - ID dari pengguna yang akan dihapus.
+- **Response:** Pesan sukses setelah penghapusan.
 
-#### 6. Menghapus Semua Pengguna
+### 10. Hapus Semua Pengguna
 
-- **Method:** DELETE
+- **Metode HTTP:** DELETE
 - **Endpoint:** `/users`
-- **Response:** Pesan sukses setelah semua pengguna berhasil dihapus.
+- **Deskripsi:** Menghapus semua pengguna.
+- **Response:** Pesan sukses setelah penghapusan.
 
-### Exception Handling
+## Metode Utilitas
 
-- Jika pengguna dengan ID yang diberikan tidak ditemukan, akan dilemparkan `UserNotFoundException`.
+- **isValidCSVHeader(header, expectedHeader):** Memeriksa apakah header file CSV valid.
+- **generateUserCode():** Menghasilkan kode pengguna unik untuk pengguna baru.
